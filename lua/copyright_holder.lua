@@ -1,2 +1,0 @@
--- This addon was created by [GB5] Natsu Dragneel
--- Unauthorised upload will be dealt with
