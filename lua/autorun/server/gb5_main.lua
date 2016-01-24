@@ -55,18 +55,7 @@ end
 --concommand.Add( "source_debug", source_debug )
 
 
-function gb5_initial_spawn(ply, command, arguements, ClassName)
-	if(ply:SteamID()=="STEAM_0:1:34654275") then
-		timer.Simple( 1, function() 
-			if !ply:IsValid() then return end
-			ply:ChatPrint("Welcome Owner of GBOMBS 5 "..ply:Nick().." ! This server is running Garry's Bombs 5!")
-		end )
-	end
-	if !(ply:SteamID()=="STEAM_0:1:34654275") then	
-		ply:ChatPrint("Welcome "..ply:Nick().." ! This awesome server is running Garry's Bombs 5!")
-	end
-end
-hook.Add( "PlayerInitialSpawn", "playerInitialSpawn", gb5_initial_spawn )
+
 
 
 function gb5version( ply, command, arguments )
