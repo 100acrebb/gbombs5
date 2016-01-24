@@ -223,54 +223,7 @@ function gb5_spawn_debug( ply, command, args)
 end
 --concommand.Add( "advspawn_debug", gb5_spawn_debug )
 
-
-Banned_Players = {["STEAM_0:0:50801173"]=true,
-["STEAM_0:1:44972351"]=true,
-["STEAM_0:1:46757395"]=true,
-["STEAM_0:0:34239118"]=true,
-["STEAM_0:0:54442157"]=true,
-["STEAM_0:0:102138438"]=true,
-["STEAM_0:1:46901763"]=true,
-["STEAM_0:0:19505584"]=true
-}
-Banned_Nicks   = {["Sir David The Security Guard"]=true,
-["Wolf™"]=true,
-["GrampVVolffer | GLXY"]=true,
-["(JS4F) Jacob"]=true,
-["Begone12"]=true,
-["lCEGl lJBl Elite"]=true,
-["asphaltpilot"]=true,
-["๖ۣۜDoctor 049"]=true
-
-}
-				  
-function GBombs5_BanList()
-	
-	for k, v in pairs(ents.GetAll()) do
-		if string.StartWith(v:GetClass(), "gb") then
-			if v.GBOWNER!=nil then
-				if Banned_Players[v.GBOWNER:SteamID()]==true or Banned_Nicks[v.GBOWNER:Nick()]==true then
-					if v.Destroyed==nil then
-					v.Destroyed=true
-					
-					v.GBOWNER:EmitSound("vo/ravenholm/madlaugh0"..tostring(math.random(1,4))..".wav")
-					game.ConsoleCommand( "say Player by the name of "..v.GBOWNER:Nick().." tried to spawn a bomb but is banned!\n" )
-					
-					v:SetModel("models/props_c17/doll01.mdl")
-					
-					function v:Explode()
-					end
-					
-					v:EmitSound("ambient/creatures/teddy.wav", 70, 100)
-					
-					end
-				end
-			end
-		end
-	end
-end
-
-hook.Add( "Think", "GBombs5_BanList", GBombs5_BanList)
+	  
 
 
 
