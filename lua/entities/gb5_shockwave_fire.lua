@@ -46,7 +46,7 @@ function ENT:Think(ply)
 				 local dmg = DamageInfo()
 				 dmg:SetDamage(math.random(1,3))
 				 dmg:SetDamageType(DMG_RADIATION)
-				 dmg:SetAttacker(self.GBOWNER)
+				 if (self.GBOWNER ~= nil) then dmg:SetAttacker(self.GBOWNER) end
 				 phys = v:GetPhysicsObjectNum(i)
 				 if v:IsOnFire() then
 					v:Extinguish()
@@ -72,20 +72,20 @@ function ENT:Think(ply)
 				 
 				 if (v:IsPlayer()) and !v:IsOnGround() then
 					 if !(self.Ignore==self.GBOWNER) && !(self.Ignoreowner) then
-					 v:SetMoveType( MOVETYPE_WALK )
-					 v:TakeDamageInfo(dmg)
-					 local mass = phys:GetMass()
-					 local F_ang = self.DEFAULT_PHYSFORCE_PLYAIR
-					 local dist = (pos - v:GetPos()):Length()
-					 local relation = math.Clamp((self.CURRENTRANGE - dist) / self.CURRENTRANGE, 0, 1)
-					 local F_dir = (v:GetPos() - pos):GetNormal() * self.DEFAULT_PHYSFORCE_PLYAIR
-					 v:SetVelocity( F_dir )
-					 if v:IsOnFire() then
-						v:Extinguish()
-						v:Ignite(4,0)
-					 else
-						v:Ignite(4,0)
-					 end
+						 v:SetMoveType( MOVETYPE_WALK )
+						 v:TakeDamageInfo(dmg)
+						 local mass = phys:GetMass()
+						 local F_ang = self.DEFAULT_PHYSFORCE_PLYAIR
+						 local dist = (pos - v:GetPos()):Length()
+						 local relation = math.Clamp((self.CURRENTRANGE - dist) / self.CURRENTRANGE, 0, 1)
+						 local F_dir = (v:GetPos() - pos):GetNormal() * self.DEFAULT_PHYSFORCE_PLYAIR
+						 v:SetVelocity( F_dir )
+						 if v:IsOnFire() then
+							v:Extinguish()
+							v:Ignite(4,0)
+						 else
+							v:Ignite(4,0)
+						 end
 					 end
 					 
 				 end

@@ -13,4 +13,4 @@ if (CLIENT) then
 		 end
      end
 end
-hook.Add( "OnPlayerChat", "gb5help", gb5help )
+-- hook.Add( "OnPlayerChat", "gb5help", gb5help )
